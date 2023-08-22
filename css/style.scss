@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+}
+
+.todo-header {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.body-container{
+    margin: 1em 10em;
+}
+
+.searchouter {
+    // display: flex;
+    // justify-content: center;
+    // margin: 1em;
+    width: auto;
+    
+    .searchbar {
+        width: 99%;
+    }
+}
+.bottom-container{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em;
+}

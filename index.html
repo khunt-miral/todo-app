@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-app</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="module" src="script.js"></script>
+</head>
+
+<body>
+    <h1 class="todo-header">TODO LIST</h1>
+
+    <div class="body-container">
+        <!-- <div class="searchouter">
+            <input type="text" class="searchbar">
+        </div> -->
+
+        <form class="todo-form js-form">
+            <input autofocus type="text" aria-label="Enter a new todo item" class="js-todo-input">
+        </form>
+
+        <!-- <div class="todos-container"> -->
+            <!-- <div class="todos-row">
+                <div class="item-container">
+                    <input type="checkbox" name="checkbox">
+                </div>
+                <div class="editDeleteContainer">
+                    <button>edit</button>
+                    <button>delete</button>
+                </div>
+            </div> -->
+            <!-- No results found -->
+        <!-- </div> -->
+        <ul class="todo-list js-todo-list"></ul>
+        <div class="bottom-container">
+            <div class="add">
+                <button class="addBtn" id="addBtn">Add</button>
+            </div>
+            <div class="search">
+                <button>Search</button>
+            </div>
+            <div class="actions-container">
+                <select name="actions" id="actions">
+                    <option value="actions">Actions</option>
+                    <option value="actions">Delete All Selected</option>
+                    <option value="actions">Select All</option>
+                    <option value="actions">Un Select All</option>
+                </select>
+            </div>
+            <div class="sort-container">
+                <select name="sorting" id="sort">
+                    <option value="actions">Sort</option>
+                    <option value="actions">A-Z</option>
+                    <option value="actions">Z-A</option>
+                    <option value="actions">Newest</option>
+                    <option value="actions">Oldest</option>
+                </select>
+            </div>
+            <div class="btn-container">
+                <button>All</button>
+                <button>Active</button>
+                <button>Completed</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
