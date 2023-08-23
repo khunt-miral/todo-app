@@ -11,11 +11,12 @@
   margin: 1em 10em;
 }
 
+input.js-todo-input {
+  width: 99%;
+}
+
 .searchouter {
   width: auto;
-}
-.searchouter .searchbar {
-  width: 99%;
 }
 
 .bottom-container {

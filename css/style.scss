@@ -10,17 +10,16 @@
 .body-container{
     margin: 1em 10em;
 }
-
+input.js-todo-input {
+    width: 99%;
+}
 .searchouter {
     // display: flex;
     // justify-content: center;
     // margin: 1em;
     width: auto;
-    
-    .searchbar {
-        width: 99%;
-    }
 }
+
 .bottom-container{
     display: flex;
     justify-content: space-evenly;
