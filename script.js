@@ -57,7 +57,7 @@ function todoCompleted(todoid) {
                 todo.checked = !todo.checked;
             }
         })
-        renderTodo(todos);
+        // renderTodo(todos);
     } else {
         document.querySelector('.nodata').style.display = "none";
     }
