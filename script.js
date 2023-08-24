@@ -1,14 +1,11 @@
 'use strict';
 
-const todos = [];
+let todos = [];
 const list = document.querySelector('.js-todo-list');
 
 
-
-
-
 //adding a new todo to the list
-const addTodo = function (text, todos) {
+const addTodo = function (text) {
     const todo = {
         text,
         checked: false,
@@ -22,37 +19,64 @@ const addTodo = function (text, todos) {
         return;
     } else {
         todos.push(todo);
-        renderTodo(todo);
+        document.querySelector('.nodata').style.display = "none";
+        renderTodo(todos);
     }
-    console.log(todos);
 }
-
 
 //displaying todo
-const renderTodo = function (todo) {
-    const isChecked = todo.checked ? true : '';
-    const node = document.createElement("li");
-    node.setAttribute('class', `todo-item ${isChecked}`);
-    node.setAttribute('data-key', todo.id);
-    node.innerHTML = `
-    <input id="${todo.id}" type="checkbox"/>
-    <label for="${todo.id}" class="tick js-tick"></label>
-    <span>${todo.text}</span>
-    <button class="edit-todo js-edit-todo">Edit</button>
-    <button class="delte-todo js-delete-todo">Delete</button>`;
-    list.append(node)
-
-
-
-
-    // document.querySelector('.todo-item').addEventListener('click', function(e){
-    //     e.preventDefault();
-    //     // node.parentNode.removeChild(node);
-    //     node.remove()
-    // })
-
-    // todos.forEach((key)=>console.log(key))
+const renderTodo = function (todos) {
+    list.innerHTML = '';
+    todos.forEach(element => {
+        const node = document.createElement("li");
+        node.setAttribute('data-key', element.id);
+        node.innerHTML = `
+            <div class="lists">
+                <div>
+                    <div class="upc">
+                    <input type="checkbox" ${element.checked ? "checked" : ''} onchange="todoCompleted(${element.id})"/>
+                    <label class="tick js-tick"></label>
+                    <div class="textcontent">${element.text}</div>
+                    </div>
+                </div>
+            <div class="btns">
+            <button class="edit-todo js-edit-todo">Edit</button>
+            <button class="delte-todo js-delete-todo" onclick="deleteTodo(${element.id})">Delete</button>
+            </div>
+            </div>
+            `;
+        list.append(node)
+    })
 }
+
+//completed todo
+function todoCompleted(todoid) {
+    if (todoid) {
+        todos.forEach(todo => {
+            if (todo.id === todoid) {
+                todo.checked = !todo.checked;
+            }
+        })
+        renderTodo(todos);
+    } else {
+        document.querySelector('.nodata').style.display = "none";
+    }
+
+}
+
+//delete todo
+function deleteTodo(todoid) {
+    const todoindex = todos.findIndex(idx => idx.id === todoid);
+    if (todoindex > -1) {
+        todos.splice(todoindex, 1);
+        renderTodo(todos);
+    }
+    if (todos.length <= 0) {
+        document.querySelector('.nodata').style.display = "block";
+    }
+}
+
+
 
 const form = document.querySelector('.js-form');
 
@@ -61,29 +85,109 @@ form.addEventListener('submit', event => {
     const input = document.querySelector('.js-todo-input');
     const text = input.value.trim();
     if (text !== '') {
-        addTodo(text, todos);
-        input.value = '';
+        addTodo(text);
     }
+    input.value = '';
 })
 
-//sorting todo
-// document.querySelector('#searchbtn').addEventListener('click', function () {
+//search button
+document.querySelector('#searchbtn').addEventListener('click', function () {
+    const searchValue = document.querySelector('#todoinput').value;
+    const filterdSearchValue = todos.filter(element => element.text.includes(searchValue));
+    if (filterdSearchValue.length > 0 && searchValue) {
+        renderTodo(filterdSearchValue);
+    } else {
+        list.innerHTML = '';
+        document.querySelector('.nodata').style.display = "block";
+    }
 
-// })
-
-document.querySelector('select').addEventListener('change', function (e) {
-    // alert(e.target.value)
 })
+
+//all button
+document.querySelector('#all').addEventListener('click', function (e) {
+    e.preventDefault();
+    renderTodo(todos)
+})
+
+//active button
+document.querySelector('#active').addEventListener('click', function (e) {
+    e.preventDefault();
+    const activeValues = todos.filter((element) => element.checked === false)
+    renderTodo(activeValues);
+})
+
+//completed button
+document.querySelector('#completed').addEventListener('click', function (e) {
+    const completedValues = todos.filter(element => element.checked === true);
+    renderTodo(completedValues);
+})
+
 
 //Actions
 document.querySelector('#sort').addEventListener('change', function (e) {
-    if (e.target.value === 'atoz') {
-        const naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-        todos.sort((a, b) => naturalCollator.compare(a.text, b.text));
-        console.log(todos);
-    }else if(e.target.value === 'ztoa') {
-        const naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-        todos.sort((a, b) => naturalCollator.compare(b.text, a.text));
-        console.log(todos)
+    switch (e.target.value) {
+        case 'atoz':
+            var naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+            todos.sort((a, b) => naturalCollator.compare(a.text, b.text));
+            renderTodo(todos);
+            e.target.value = 'sort';
+            break;
+
+        case 'ztoa':
+            naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+            todos.sort((a, b) => naturalCollator.compare(b.text, a.text));
+            renderTodo(todos);
+            e.target.value = 'sort';
+            break;
+
+        case 'newest':
+            naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+            todos.sort((a, b) => naturalCollator.compare(b.id, a.id));
+            renderTodo(todos);
+            e.target.value = 'sort';
+            break;
+
+        case 'oldest':
+            naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+            todos.sort((a, b) => naturalCollator.compare(a.id, b.id));
+            renderTodo(todos);
+            e.target.value = 'sort';
+            break;
+
+        default:
+            console.log("Invalid event");
+            break;
+    }
+})
+
+//actions
+document.querySelector('#actions').addEventListener('change', function (e) {
+    switch (e.target.value) {
+        case 'deleteallselected':
+            const activeValues = todos.filter((element) => element.checked === true)
+            activeValues.filter(function (active) {
+                todos = todos.filter(function (todoactive) {
+                    return todoactive.checked !== active.checked;
+                })
+            })
+            renderTodo(todos);
+            e.target.value = 'action';
+            break;
+
+        case 'selectall':
+            todos.map(element => element.checked = true);
+            renderTodo(todos);
+            e.target.value = 'action';
+            break;
+
+        case 'unselectall':
+            todos.map(element => element.checked = false);
+            renderTodo(todos);
+            e.target.value = 'action';
+            break;
+        default:
+            console.log("Select Option");
+            e.target.value = 'action';
+            break;
     }
 })

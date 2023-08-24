@@ -1,10 +1,79 @@
 * {
   margin: 0;
+  padding: 0;
+  background-color: rgb(16, 13, 13);
+  color: white;
+}
+
+html,
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 1em;
+}
+
+li {
+  margin: 1em;
+}
+
+span {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70ch;
+}
+
+button {
+  cursor: pointer;
+  margin: 0 0.6em;
+  padding: 0.2em;
+  width: 90px;
+  border: 1px solid white;
+  border-radius: 1vh;
+}
+
+button:hover {
+  background-color: rgb(186, 190, 190);
+}
+
+select {
+  cursor: pointer;
+}
+
+input[type=text] {
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  font-size: large;
+}
+
+.upc {
+  display: flex;
+  align-items: center;
+}
+.upc .textcontent {
+  margin: 0 0.5em;
+}
+
+.nodata {
+  display: block;
+  margin: 1em;
 }
 
 .todo-header {
   text-align: center;
-  margin-bottom: 1em;
+  margin: 1em 0;
+}
+
+.lists {
+  display: flex;
+  justify-content: space-between;
+}
+.lists .btns {
+  display: flex;
 }
 
 .body-container {
@@ -17,6 +86,10 @@ input.js-todo-input {
 
 .searchouter {
   width: auto;
+}
+
+.btn-container {
+  margin: 0 1em;
 }
 
 .bottom-container {

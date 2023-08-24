@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-app</title>
     <link rel="stylesheet" href="/css/style.css">
-    <script type="module" src="script.js"></script>
-    
+    <!-- <script type="module" src="script.js"></script> -->
+
 </head>
 
 <body>
@@ -15,15 +15,24 @@
 
     <div class="body-container">
         <form class="todo-form js-form">
-            <input autofocus type="text" aria-label="Enter a new todo item" class="js-todo-input">
+            <input autofocus type="text" class="js-todo-input" id="todoinput" placeholder="Search">
         </form>
+        <div class="nodata">
+            No Results Found
+        </div>
         <ul class="todo-list js-todo-list">
-            <!-- <li>
-                <input id="123" type="checkbox" />
-                <label for="123" class="tick js-tick"></label>
-                <span>abc</span>
-                <button class="edit-todo js-edit-todo">Edit</button>
-                <button class="delte-todo js-delete-todo" id="deletebtn">Delete</button>
+             <!-- <li>
+                <div class="lists">
+                    <div class="upc">
+                        <input type="checkbox" checked data-key="todoCompleted(${element.id})" />
+                        <label class="tick js-tick"></label>
+                        <div class="textcontent">sdkfj</div>
+                    </div>
+                    <div class="btns">
+                        <button class="edit-todo js-edit-todo">Edit</button>
+                        <button class="delte-todo js-delete-todo">Delete</button>
+                    </div>
+                </div>
             </li> -->
         </ul>
         <div class="bottom-container">
@@ -31,7 +40,7 @@
                 <button class="addBtn" id="addBtn">Add</button>
             </div>
             <div class="search">
-                <button id="searchbtn" >Search</button>
+                <button id="searchbtn">Search</button>
             </div>
             <div class="actions-container">
                 <select name="Actions" id="actions">
@@ -42,7 +51,7 @@
                 </select>
             </div>
             <div class="sort-container">
-                <select name="sorting" id="sort" >
+                <select name="sorting" id="sort">
                     <option value="sort">Sort</option>
                     <option value="atoz">A-Z</option>
                     <option value="ztoa">Z-A</option>
@@ -51,13 +60,13 @@
                 </select>
             </div>
             <div class="btn-container">
-                <button>All</button>
-                <button>Active</button>
-                <button>Completed</button>
+                <button id="all">All</button>
+                <button id="active">Active</button>
+                <button id="completed">Completed</button>
             </div>
         </div>
     </div>
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
 </body>
 
 </html>
