@@ -104,61 +104,59 @@ document.querySelector('#searchbtn').addEventListener('click', function () {
 })
 
 //all button
-document.querySelector('#all').addEventListener('click', function (e) {
-    e.preventDefault();
+function findAll() {
     renderTodo(todos)
-})
+}
 
 //active button
-document.querySelector('#active').addEventListener('click', function (e) {
-    e.preventDefault();
+function findActive() {
     const activeValues = todos.filter((element) => element.checked === false)
     renderTodo(activeValues);
-})
+}
 
 //completed button
-document.querySelector('#completed').addEventListener('click', function (e) {
+function findCompleted() {
     const completedValues = todos.filter(element => element.checked === true);
     renderTodo(completedValues);
-})
+}
 
 
 //Actions
-document.querySelector('#sort').addEventListener('change', function (e) {
-    switch (e.target.value) {
+function sorts(e) {
+    switch (e.value) {
         case 'atoz':
             var naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
             todos.sort((a, b) => naturalCollator.compare(a.text, b.text));
             renderTodo(todos);
-            e.target.value = 'sort';
+            e.value = 'sort';
             break;
 
         case 'ztoa':
             naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
             todos.sort((a, b) => naturalCollator.compare(b.text, a.text));
             renderTodo(todos);
-            e.target.value = 'sort';
+            e.value = 'sort';
             break;
 
         case 'newest':
             naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
             todos.sort((a, b) => naturalCollator.compare(b.id, a.id));
             renderTodo(todos);
-            e.target.value = 'sort';
+            e.value = 'sort';
             break;
 
         case 'oldest':
             naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
             todos.sort((a, b) => naturalCollator.compare(a.id, b.id));
             renderTodo(todos);
-            e.target.value = 'sort';
+            e.value = 'sort';
             break;
 
         default:
             console.log("Invalid event");
             break;
     }
-})
+}
 
 //actions
 document.querySelector('#actions').addEventListener('change', function (e) {

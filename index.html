@@ -7,7 +7,6 @@
     <title>Todo-app</title>
     <link rel="stylesheet" href="style.css">
     <!-- <script type="module" src="script.js"></script> -->
-
 </head>
 
 <body>
@@ -51,18 +50,18 @@
                 </select>
             </div>
             <div class="sort-container">
-                <select name="sorting" id="sort">
+                <select name="sorting" onchange="sorts(this)" id="sort">
                     <option value="sort">Sort</option>
-                    <option value="atoz">A-Z</option>
+                    <option value="atoz" >A-Z</option>
                     <option value="ztoa">Z-A</option>
                     <option value="newest">Newest</option>
                     <option value="oldest">Oldest</option>
                 </select>
             </div>
             <div class="btn-container">
-                <button id="all">All</button>
-                <button id="active">Active</button>
-                <button id="completed">Completed</button>
+                <button id="all" onclick="findAll()">All</button>
+                <button id="active" onclick="findActive()">Active</button>
+                <button id="completed" onclick="findCompleted()">Completed</button>
             </div>
         </div>
     </div>
