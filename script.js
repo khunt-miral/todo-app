@@ -2,6 +2,7 @@
 
 let todos = [];
 const list = document.querySelector('.js-todo-list');
+let activescreen = [];
 
 
 //adding a new todo to the list
@@ -19,15 +20,17 @@ const addTodo = function (text) {
         return;
     } else {
         todos.push(todo);
+        activescreen.push(todo);
         document.querySelector('.nodata').style.display = "none";
         renderTodo(todos);
     }
 }
 
 //displaying todo
-const renderTodo = function (todos) {
+const renderTodo = function (todolist) {
+    console.log("Render todo called");
     list.innerHTML = '';
-    todos.forEach(element => {
+    todolist.forEach(element => {
         const node = document.createElement("li");
         node.setAttribute('data-key', element.id);
         node.innerHTML = `
@@ -52,12 +55,11 @@ const renderTodo = function (todos) {
 //completed todo
 function todoCompleted(todoid) {
     if (todoid) {
-        todos.forEach(todo => {
+        activescreen.forEach(todo => {
             if (todo.id === todoid) {
                 todo.checked = !todo.checked;
             }
         })
-        // renderTodo(todos);
     } else {
         document.querySelector('.nodata').style.display = "none";
     }
@@ -103,52 +105,35 @@ document.querySelector('#searchbtn').addEventListener('click', function () {
 
 })
 
-//all button
-function findAll() {
-    renderTodo(todos)
-}
-
-//active button
-function findActive() {
-    const activeValues = todos.filter((element) => element.checked === false)
-    renderTodo(activeValues);
-}
-
-//completed button
-function findCompleted() {
-    const completedValues = todos.filter(element => element.checked === true);
-    renderTodo(completedValues);
-}
-
 
 //Actions
 function sorts(e) {
     switch (e.value) {
         case 'atoz':
             var naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-            todos.sort((a, b) => naturalCollator.compare(a.text, b.text));
-            renderTodo(todos);
+            activescreen.sort((a, b) => naturalCollator.compare(a.text, b.text));
+            renderTodo(activescreen);
             e.value = 'sort';
             break;
 
         case 'ztoa':
             naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-            todos.sort((a, b) => naturalCollator.compare(b.text, a.text));
-            renderTodo(todos);
+            activescreen.sort((a, b) => naturalCollator.compare(b.text, a.text));
+            renderTodo(activescreen);
             e.value = 'sort';
             break;
 
         case 'newest':
             naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-            todos.sort((a, b) => naturalCollator.compare(b.id, a.id));
-            renderTodo(todos);
+            activescreen.sort((a, b) => naturalCollator.compare(b.id, a.id));
+            renderTodo(activescreen);
             e.value = 'sort';
             break;
 
         case 'oldest':
             naturalCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-            todos.sort((a, b) => naturalCollator.compare(a.id, b.id));
-            renderTodo(todos);
+            activescreen.sort((a, b) => naturalCollator.compare(a.id, b.id));
+            renderTodo(activescreen);
             e.value = 'sort';
             break;
 
@@ -158,29 +143,49 @@ function sorts(e) {
     }
 }
 
+//all button
+function findAll() {
+    renderTodo(todos);
+}
+
+//active button
+function findActive() {
+    activescreen = todos.filter((element) => element.checked === false);
+    renderTodo(activescreen);
+}
+
+//completed button
+function findCompleted() {
+    activescreen = todos.filter(element => element.checked === true);
+    renderTodo(activescreen);
+}
+
 //actions
 document.querySelector('#actions').addEventListener('change', function (e) {
     switch (e.target.value) {
+        
         case 'deleteallselected':
-            const activeValues = todos.filter((element) => element.checked === true)
+            const activeValues = activescreen.filter((element) => element.checked === true);
             activeValues.filter(function (active) {
-                todos = todos.filter(function (todoactive) {
+                activescreen = activescreen.filter(function (todoactive) {
                     return todoactive.checked !== active.checked;
                 })
-            })
-            renderTodo(todos);
+            });
+            activescreen = activescreen.filter(ele => activeValues.indexOf(ele) == -1);
+            todos = activescreen;
+            renderTodo(activescreen);
             e.target.value = 'action';
             break;
 
         case 'selectall':
-            todos.map(element => element.checked = true);
-            renderTodo(todos);
+            activescreen.map(element => element.checked = true);
+            // renderTodo(activescreen);
             e.target.value = 'action';
             break;
 
         case 'unselectall':
-            todos.map(element => element.checked = false);
-            renderTodo(todos);
+            activescreen.map(element => element.checked = false);
+            renderTodo(activescreen);
             e.target.value = 'action';
             break;
         default:

@@ -39,6 +39,10 @@ button:hover{
     background-color: rgb(186, 190, 190);
 }
 
+button:focus{
+    background-color: rgb(186, 190, 190);;
+}
+
 select{
     cursor: pointer;
 }
