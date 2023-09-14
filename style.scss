@@ -132,6 +132,11 @@ section h3 {
 
 #main {
   margin-top: 5em;
+  
+}
+.main{
+    max-height: 70vh;
+    overflow: scroll;
 }
 
 .listContainer {
@@ -177,8 +182,8 @@ section h3 {
   text-wrap: nowrap;
 }
 .footerContainer button {
+    cursor: pointer;
   font-size: 1.1em;
-  margin: -3px;
   padding: 0.1em 0.5em;
   box-sizing: border-box;
   background-color: #9dd6ff;
@@ -211,6 +216,5 @@ footer .add {
 .btn {
   border: 2px solid #9dd6ff;
   padding: 0.3em 0.7em;
-  height: 3vh;
-  width: 3vh;
+cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

@@ -338,7 +338,6 @@ const editHandle = (e) => {
 
     let labeledit = document.querySelector(`#label${e.target.id.slice(4)}`);
     labeledit.hidden = true;
-    console.log('editinp', editInput);
 
     editInput.value = labeledit.textContent
     editInput.addEventListener('keyup', (e) => {
@@ -433,7 +432,7 @@ const searchHandler = (e) => {
 
 
     if (e.key === 'Enter' && checkExist(todoInput.value.trim())) {
-        // console.log(arr.find((a) => a.task == todoInput.value.trim()));
+    
         console.log(arr.filter((curr) => curr.task.includes(todoInput.value.trim())));
         updateUI(undefined, arr.filter((curr) => curr.task.includes(todoInput.value.trim())))
 
@@ -461,7 +460,7 @@ const selectionHandler = () => {
     console.log(list);
     switch (select.value) {
         case 'delete':
-            del = list.filter(curr => document.querySelector(`#list${curr.id}`).checked);
+            del = arr.filter(curr => document.querySelector(`#list${curr.id}`).checked);
             console.log('del', del);
             console.log('l', list);
             list = list.filter(item => !del.some(d => d.id === item.id));
