@@ -58,7 +58,6 @@ function editHandle(e) {
     let editid = e.target.id.slice(4);
     let editInput = document.querySelector(`#area${e.target.id}`);
     editInput.hidden = false;
-    alert("d")
     editInput.focus();
 
     let labeledit = document.querySelector(`#label${e.target.id.slice(4)}`);
@@ -76,7 +75,7 @@ function editHandle(e) {
             editInput.hidden = true;
         }
     })
-    document.querySelector('body').addEventListener('click', () => {
+    editInput.querySelector('body').addEventListener('click', () => {
         console.log('body');
         editInput.hidden = true;
         labeledit.hidden = false;
