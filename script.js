@@ -139,8 +139,9 @@ document.querySelector('#searchbtn').addEventListener('click', function () {
     if (filterdSearchValue.length > 0 && searchValue) {
         renderTodo(filterdSearchValue);
     } else {
-        list.innerHTML = '';
-        document.querySelector('.nodata').style.display = "block";
+        alert("No Data Found");
+        // list.innerHTML = '';
+        // document.querySelector('.nodata').style.display = "block";
     }
 
 })
