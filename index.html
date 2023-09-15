@@ -1,75 +1,71 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Todo-app</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- <script type="module" src="script.js"></script> -->
 </head>
 
 <body>
-    <div>
-        <h1> TODO LIST</h1>
+    <h1 class="todo-header">TODO LIST</h1>
+
+    <div class="body-container">
+        <form class="todo-form js-form">
+            <input autofocus type="text" class="js-todo-input" id="todoinput" placeholder="Search">
+        </form>
+        <div class="nodata">
+            No Results Found
+        </div>
+        <ul class="todo-list js-todo-list">
+             <!-- <li>
+                <div class="lists">
+                    <div class="upc">
+                        <input type="checkbox" checked data-key="todoCompleted(${element.id})" />
+                        <label class="tick js-tick"></label>
+                        <div class="textcontent">sdkfj</div>
+                    </div>
+                    <div class="btns">
+                        <button class="edit-todo js-edit-todo">Edit</button>
+                        <button class="delte-todo js-delete-todo">Delete</button>
+                    </div>
+                </div>
+            </li> -->
+        </ul>
+        <div class="bottom-container">
+            <div class="add">
+                <button class="addBtn" id="addBtn">Add</button>
+            </div>
+            <div class="search">
+                <button id="searchbtn">Search</button>
+            </div>
+            <div class="actions-container">
+                <select name="Actions" id="actions">
+                    <option value="action">Actions</option>
+                    <option value="deleteallselected">Delete All Selected</option>
+                    <option value="selectall">Select All</option>
+                    <option value="unselectall">Un Select All</option>
+                </select>
+            </div>
+            <div class="sort-container">
+                <select name="sorting" onchange="sorts(this)" id="sort">
+                    <option value="sort">Sort</option>
+                    <option value="atoz" >A-Z</option>
+                    <option value="ztoa">Z-A</option>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+            </div>
+            <div class="btn-container">
+                <button id="all" onclick="findAll()">All</button>
+                <button id="active" onclick="findActive()">Active</button>
+                <button id="completed" onclick="findCompleted()">Completed</button>
+            </div>
+        </div>
     </div>
-    <section>
-        <div class="inputField input-group-text">
-            <input type="text" name="todo" id="todo">
-        </div>
-        <h3>No data Found</h3>
-        <div class="main">
-            <!-- <div class="listContainer">
-                <div class="left">
-                    <input type="checkbox" id="list${curr.id}" name="list${curr.id}" class="list">
-                    <label for="list${curr.id}">${curr.task}</label>
-                    <input hidden type="text" id="edit1" class="edit">
-                </div>
-                <div class="right">
-                    <img id="edit${curr.id}" class="edit" src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="">
-                    <img id="delete${curr.id}" class="delete" src="https://png.pngtree.com/png-vector/20190420/ourmid/pngtree-delete-vector-icon-png-image_963444.jpg" alt="">
-                </div>
-            </div> -->
-        </div>
-        <footer>
-            <div class="footerContainer">
-                <button class="btn" onclick="selectBtn(this)" id="add" >Add</button>
-                <button class="btn" onclick="selectBtn(this)" id="search">Search</button>
-            </div>
-            <div class="footerContainer">
-                <div class="select">
-                    <select name="select" id="select">
-                        <option value="Action">Action</option>
-                        <option value="select">Select All</option>
-                        <option value="unselect">Unselect All</option>
-                        <option value="delete">Delete All Selected</option>
-                    </select>
-                </div>
-                <div class="sort">
-                    <select name="sort" id="sort">
-                        <option value="Sort" selected>Sort</option>
-                        <option value="A-Z">A-Z</option>
-                        <option value="Z-A">Z-A</option>
-                        <option value="newest">Newest</option>
-                        <option value="oldest">Oldest</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="footerContainer">
-                <div>
-                    <button class="button" onclick="selectButton(this)" id="allbtn">All</button>
-                    <button class="button" onclick="selectButton(this)" id="activebtn">Active</button>
-                    <button class="button" onclick="selectButton(this)" id="completebtn">Completed</button>
-                </div>
-            </div>
-        </footer>
-    </section>
-
     <script src="script.js"></script>
-
 </body>
 
 </html>
