@@ -54,21 +54,21 @@ const renderTodo = function (todolist) {
     })
 }
 
-function editHandle(e){
-
+function editHandle(e) {
     let editid = e.target.id.slice(4);
     let editInput = document.querySelector(`#area${e.target.id}`);
     editInput.hidden = false;
+    alert("d")
     editInput.focus();
-    
+
     let labeledit = document.querySelector(`#label${e.target.id.slice(4)}`);
     labeledit.hidden = true;
-    
+
     editInput.value = labeledit.textContent
     editInput.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
             labeledit.hidden = false;
-            if(!editInput.value){
+            if (!editInput.value) {
                 alert("Empty values not allowed");
                 return;
             }
@@ -76,11 +76,12 @@ function editHandle(e){
             editInput.hidden = true;
         }
     })
-    
-    editInput.addEventListener('blur', () => {
+    document.querySelector('body').addEventListener('click', () => {
+        console.log('body');
         editInput.hidden = true;
         labeledit.hidden = false;
-    })
+    });
+
 }
 //completed todo
 function todoCompleted(todoid) {
@@ -205,10 +206,13 @@ function findCompleted() {
 document.querySelector('#actions').addEventListener('change', function (e) {
     if (e.target.value === "deleteallselected") {
         let selected = document.querySelectorAll("input[type='checkbox']:checked");
-			for (let i = 0; i < selected.length; i++) {
-				let index = todos.findIndex(todo => todo.text === selected[i].nextSibling.innerHTML);
-				todos.splice(index, 1);
-			}
+        console.log(selected)
+        for (let i = 0; i < selected.length; i++) {
+            let index = todos.findIndex(tod => tod.text === selected[i].nextSibling.nextSibling.innerHTML);
+            console.log(index)
+            todos.splice(index, 1);
+            
+        }
         renderTodo(todos);
         e.target.value = 'action';
     }
