@@ -7,7 +7,7 @@
 
 html,
 body {
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 ul {
@@ -17,77 +17,72 @@ ul {
 
 li {
   margin: 1em;
+  
 }
-
-span {
-  display: inline-block;
+span{
+  display:inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 70ch;
 }
-
 button {
   cursor: pointer;
   margin: 0 0.6em;
-  padding: 0.2em;
+  padding: 0.2em ;
   width: 90px;
   border: 1px solid white;
   border-radius: 1vh;
 }
 
-button:hover {
+button:hover{
   background-color: rgb(186, 190, 190);
 }
 
-button:focus {
-  background-color: rgb(186, 190, 190);
+button:focus{
+  background-color: rgb(186, 190, 190);;
 }
 
-select {
+select{
   cursor: pointer;
 }
 
-label {
-  width: 20vh;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+label{
+  width : 20vh;
+    overflow:hidden;
+    text-overflow: ellipsis;  
+    white-space: nowrap;
   margin-left: 1em;
 }
 
-input[type=text] {
+input[type='text'] {
   border: 2px solid whitesmoke;
   border-radius: 10px;
   font-size: large;
 }
-
-.upc {
+.upc{
   display: flex;
   align-items: center;
+  .textcontent{
+      margin: 0 0.5em;
+  }
 }
-.upc .textcontent {
-  margin: 0 0.5em;
-}
-
-.nodata {
+.nodata{
   display: block;
   margin: 1em;
 }
-
 .todo-header {
   text-align: center;
   margin: 1em 0;
+  
 }
-
-.lists {
+.lists{
   display: flex;
   justify-content: space-between;
+  .btns{
+     display: flex;
+  }
 }
-.lists .btns {
-  display: flex;
-}
-
 .body-container {
   margin: 1em 10em;
 }
@@ -102,10 +97,11 @@ input.js-todo-input {
 
 .btn-container {
   margin: 0 1em;
+
 }
 
 .bottom-container {
   display: flex;
   justify-content: space-evenly;
   margin: 1em;
-}/*# sourceMappingURL=style.css.map */
+}
