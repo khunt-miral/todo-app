@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-app</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <script type="module" src="script.js"></script> -->
+
 </head>
 
 <body>
@@ -19,21 +19,7 @@
         <div class="nodata">
             No Results Found
         </div>
-        <ul class="todo-list js-todo-list">
-             <!-- <li>
-                <div class="lists">
-                    <div class="upc">
-                        <input type="checkbox" checked data-key="todoCompleted(${element.id})" />
-                        <label class="tick js-tick"></label>
-                        <div class="textcontent">sdkfj</div>
-                    </div>
-                    <div class="btns">
-                        <button class="edit-todo js-edit-todo">Edit</button>
-                        <button class="delte-todo js-delete-todo">Delete</button>
-                    </div>
-                </div>
-            </li> -->
-        </ul>
+        
         <div class="bottom-container">
             <div class="add">
                 <button class="addBtn" id="addBtn">Add</button>
@@ -64,6 +50,8 @@
                 <button id="completed" onclick="findCompleted()">Completed</button>
             </div>
         </div>
+        <ul class="todo-list js-todo-list">
+        </ul>
     </div>
     <script src="script.js"></script>
 </body>

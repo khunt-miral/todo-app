@@ -16,8 +16,7 @@ ul {
 }
 
 li {
-  margin: 1em;
-  
+  margin: .3rem;
 }
 span{
   display:inline-block;
@@ -32,7 +31,7 @@ button {
   padding: 0.2em ;
   width: 90px;
   border: 1px solid white;
-  border-radius: 1vh;
+  border-radius: 1rem;
 }
 
 button:hover{
@@ -41,6 +40,14 @@ button:hover{
 
 button:focus{
   background-color: rgb(186, 190, 190);;
+}
+
+.add, .search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: .3rem 0;
+
 }
 
 select{
@@ -52,7 +59,7 @@ label{
     overflow:hidden;
     text-overflow: ellipsis;  
     white-space: nowrap;
-  margin-left: 1em;
+  margin-left: .5rem;
 }
 
 input[type='text'] {
@@ -62,33 +69,27 @@ input[type='text'] {
 }
 .upc{
   display: flex;
-  align-items: center;
-  .textcontent{
-      margin: 0 0.5em;
-  }
+  
 }
 .nodata{
   display: block;
   margin: 1em;
+  width: 70vw;
 }
 .todo-header {
   text-align: center;
   margin: 1em 0;
   
 }
-.lists{
-  display: flex;
-  justify-content: space-between;
-  .btns{
-     display: flex;
-  }
-}
 .body-container {
-  margin: 1em 10em;
+  margin: 1rem 4rem;
 }
 
 input.js-todo-input {
-  width: 99%;
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchouter {
@@ -96,12 +97,53 @@ input.js-todo-input {
 }
 
 .btn-container {
-  margin: 0 1em;
-
+  margin: .5rem;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .bottom-container {
   display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  flex-wrap: wrap;
+}
+.actions-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0.6rem;
+  align-items: center;
+}
+
+.sort-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0.6rem;
+}
+
+.todo-list{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 1em;
+  overflow: auto;
+  width: 100%;
+  height: auto;
+  overflow: scroll;
+}
+.lists{
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-evenly;
 }
